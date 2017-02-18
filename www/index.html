@@ -43,7 +43,7 @@
 					<i class="icon ion-navicon"></i>
 				</button>
 				<h1 class="title">{{activeProject.title}}</h1>
-				<button class="button button-icon" ng-click="newTask()">
+				<button class="button button-icon" ng-click="confirmDelete()">
 					<i class="icon ion-close-circled"></i>
 				</button>
 			</ion-header-bar>
@@ -76,30 +76,6 @@
 				<h1 class="title">TestMenu</h1>
 			</ion-header-bar
 		</ion-side-menu>
-
-		<script id="new-task.html" type="text/ng-template">
-			<div class="modal">
-			
-				<ion-header-bar class="bar-secondary">
-					<h1 class="title">New Task</h1>
-					<button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
-				</ion-header-bar>
-				
-				<ion-content>
-				
-					<form ng-submit="createTask(task)">
-						<div class="list">
-							<label class="item item-input">
-								<input type="text" placeholder="What do you need to do?" ng-model="task.title">
-							</label>
-						</div>
-						<div class="padding">
-							<button type="submit" class="button button-block button-positive">Create Task</button>
-						</div>
-					</form>
-				</ion-content>
-			</div>
-		</script>
 		
 	</ion-side-menus>
   </body>

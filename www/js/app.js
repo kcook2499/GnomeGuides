@@ -51,13 +51,13 @@ angular.module('todo', ['ionic'])
   }
 })
 
-.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
+.controller('TodoCtrl', function($scope, $timeout, $ionicPopup, Projects, $ionicSideMenuDelegate) {
 
-	$scope.savedGuides = [
+	/*$scope.savedGuides = [
 		{
 			title: "Game Title",
 			tasks: [
-				{ title: "Trophy Title", selected: "false"},
+				{ title: "Trophy Title - ", selected: "false"},
 				{ title: "Trophy2 Title", selected: "false"},
 				{ title: "Trophy3 Title", selected: "false"}
 			]
@@ -69,7 +69,7 @@ angular.module('todo', ['ionic'])
 				{ title: "Trophy2 Title", selected: "false"}
 			]
 		}
-	];
+	];*/
 
   // A utility function for creating a new project
   // with the given projectTitle
@@ -102,22 +102,25 @@ angular.module('todo', ['ionic'])
     $ionicSideMenuDelegate.toggleLeft(false);
   };
 
-  // Create our modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
-  }, {
-    scope: $scope
-  });
-
-  $scope.createTask = function(task) {
-    if(!$scope.activeProject || !task) {
+  $scope.confirmDelete = function() {
+    if(!$scope.activeProject || projects.size() == 0) {
       return;
     }
-    $scope.activeProject.tasks.push({
-      title: task.title,
-	  selected: "false"
-    });
-    $scope.taskModal.hide();
+    
+	var confirmPopup = $ionicPopup.confirm({
+		title: "Delete Guide",
+		template: "Are you sure you want to delete this guide?"
+	});
+	
+	confirmPopup.then(function(res) {
+		if(res) {
+			$scope.projects.splice(Projects.getLastActiveIndex(),1);
+			Projects.setLastActiveIndex(0);
+			$scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
+		} else {
+			return;
+		}
+	});
 
     // Inefficient, but save all the projects
     Projects.save($scope.projects);
@@ -130,7 +133,7 @@ angular.module('todo', ['ionic'])
     $scope.taskModal.show();
   };
 
-  $scope.closeNewTask = function() {
+  $scope.closeDeleteGuide = function() {
     $scope.taskModal.hide();
   };
 
