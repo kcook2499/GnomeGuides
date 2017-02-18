@@ -96,7 +96,8 @@ angular.module('todo', ['ionic'])
       return;
     }
     $scope.activeProject.tasks.push({
-      title: task.title
+      title: task.title,
+	  selected: "false"
     });
     $scope.taskModal.hide();
 
@@ -104,6 +105,7 @@ angular.module('todo', ['ionic'])
     Projects.save($scope.projects);
 
     task.title = "";
+	task.selected = "false";
   };
 
   $scope.newTask = function() {
@@ -112,11 +114,22 @@ angular.module('todo', ['ionic'])
 
   $scope.closeNewTask = function() {
     $scope.taskModal.hide();
-  }
+  };
 
   $scope.toggleProjects = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
+  
+  $scope.updateChange = function(task) {
+	  if (task.checked) {
+		  task.selected = "true";
+	  }
+	  else {
+		  task.selected = "false";
+	  }
+	  
+	  Projects.save($scope.projects);
+  }
 
 
   // Try to create the first project, make sure to defer

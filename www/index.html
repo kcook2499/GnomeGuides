@@ -46,12 +46,14 @@
 				<button class="button button-icon" ng-click="newTask()">
 					<i class="icon ion-compose"></i>
 				</button>
+				<button class="button button-icon" ng-click="clearMemory()">
+				</button>
 			</ion-header-bar>
 			<ion-content scroll="true">
 				<ion-list>
-					<ion-item ng-repeat="task in activeProject.tasks">
+					<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'">
 						{{task.title}}
-					</ion-item>
+					</ion-checkbox>
 				</ion-list>
 			</ion-content>
 		</ion-side-menu-content>
