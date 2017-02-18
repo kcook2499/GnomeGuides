@@ -53,6 +53,24 @@ angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
 
+	$scope.savedGuides = [
+		{
+			title: "Game Title",
+			tasks: [
+				{ title: "Trophy Title", selected: "false"},
+				{ title: "Trophy2 Title", selected: "false"},
+				{ title: "Trophy3 Title", selected: "false"}
+			]
+		},
+		{
+			title: "Game2 Title",
+			tasks: [
+				{ title: "Trophy Title", selected: "false"},
+				{ title: "Trophy2 Title", selected: "false"}
+			]
+		}
+	];
+
   // A utility function for creating a new project
   // with the given projectTitle
   var createProject = function(projectTitle) {
