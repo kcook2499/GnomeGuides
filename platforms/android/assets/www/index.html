@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -43,15 +43,15 @@
 					<i class="icon ion-navicon"></i>
 				</button>
 				<h1 class="title">{{activeProject.title}}</h1>
-				<button class="button button-icon" ng-click="newTask()">
-					<i class="icon ion-compose"></i>
+				<button class="button button-icon" ng-click="confirmDelete()">
+					<i class="icon ion-close-circled"></i>
 				</button>
 			</ion-header-bar>
 			<ion-content scroll="true">
 				<ion-list>
-					<ion-item ng-repeat="task in activeProject.tasks">
+					<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'">
 						{{task.title}}
-					</ion-item>
+					</ion-checkbox>
 				</ion-list>
 			</ion-content>
 		</ion-side-menu-content>
@@ -74,32 +74,15 @@
 		<ion-side-menu side="right">
 			<ion-header-bar class="bar-dark">
 				<h1 class="title">TestMenu</h1>
-			</ion-header-bar
+			</ion-header-bar>
+            <ion-content scroll="false">
+                <ion-list>
+                    <ion-item ng-repeat="guide in savedGuides" ng-click="moveToUserList(guide, $index)">
+                        {{guide.title}}
+                    </ion-item>
+                </ion-list>
+            </ion-content>
 		</ion-side-menu>
-
-		<script id="new-task.html" type="text/ng-template">
-			<div class="modal">
-			
-				<ion-header-bar class="bar-secondary">
-					<h1 class="title">New Task</h1>
-					<button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
-				</ion-header-bar>
-				
-				<ion-content>
-				
-					<form ng-submit="createTask(task)">
-						<div class="list">
-							<label class="item item-input">
-								<input type="text" placeholder="What do you need to do?" ng-model="task.title">
-							</label>
-						</div>
-						<div class="padding">
-							<button type="submit" class="button button-block button-positive">Create Task</button>
-						</div>
-					</form>
-				</ion-content>
-			</div>
-		</script>
 		
 	</ion-side-menus>
   </body>

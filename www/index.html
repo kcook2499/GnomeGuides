@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -74,7 +74,14 @@
 		<ion-side-menu side="right">
 			<ion-header-bar class="bar-dark">
 				<h1 class="title">TestMenu</h1>
-			</ion-header-bar
+			</ion-header-bar>
+            <ion-content scroll="false">
+                <ion-list>
+                    <ion-item ng-repeat="guide in savedGuides" ng-click="moveToUserList(guide, $index)">
+                        {{guide.title}}
+                    </ion-item>
+                </ion-list>
+            </ion-content>
 		</ion-side-menu>
 		
 	</ion-side-menus>

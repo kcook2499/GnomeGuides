@@ -39,7 +39,7 @@ angular.module('todo', ['ionic'])
       // Add a new project
       return {
         title: projectTitle,
-        tasks: []
+        tasks: [{title: "temp task", selected: "false"}]
       };
     },
     getLastActiveIndex: function() {
@@ -51,7 +51,60 @@ angular.module('todo', ['ionic'])
   }
 })
 
-.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
+.controller('TodoCtrl', function($scope, $timeout, $ionicPopup, Projects, $ionicSideMenuDelegate) {
+
+    $scope.savedGuides = [
+		{
+		    title: "Tokyo Mirage Sessions",
+		    tasks: [
+				{ title: "Reincarnation: Complete the Prologue", selected: "false" },
+				{ title: "A Star is Born: Complete Ch. 1", selected: "false" },
+				{ title: "That Girl was Fired: Complete Ch. 2", selected: "false" },
+                { title: "Next Generation: Complete Ch. 3", selected: "false" },
+                { title: "The Audition: Complete Ch. 4", selected: "false" },
+                { title: "True Colors: Complete Ch. 5", selected: "false" },
+                { title: "Fire Emblem: Complete Ch. 6", selected: "false" },
+                { title: "Long Goodbye: Complete the story.", selected: "false" },
+                { title: "Grand Finale: Get the True (Complete) Ending.", selected: "false" },
+                { title: "On Your Mark: Complete 10% of the Side Stories.", selected: "false" },
+                { title: "Get Set Go: Complete 50% of the Side Stories.", selected: "false" },
+                { title: "Good Luck: Complete all side stories.", selected: "false" },
+                { title: "Newbie Model Aoi Itsuki: Gained automatically through Ch. 2", selected: "false" },
+                { title: "Backing Chorus Aoi Itsuki: Gained automatically through Ch. 3", selected: "false" },
+                { title: "The New Face in Music Aoi Itsuki: Gained automatically in Ch. 5", selected: "false" },
+                { title: "WINNER Aoi Itsuki: Finish a battle where Itsuki gets the last hit.", selected: "false" },
+                { title: "Coordinator Aoi Itsuki: Swap Itsuki's outfit to a different one (non-DLC only).", selected: "false" },
+                { title: "Radiant Star Aoi Itsuki: Get all of Itsuki's Radiant skills.", selected: "false" },
+                { title: "Oribe Tsubasa ON STAGE: Gained automatically in the Prologue when Tsubasa joins.", selected: "false" },
+                { title: "Handshake Pressure: Complete Tsubasa's 1st Side Story", selected: "false" },
+                { title: "Open your Heart: Complete Tsubasa's 2nd Side Story", selected: "false" },
+                { title: "The Wind is Tsubasa Colored: Complete Tsubasa's 3rd Side Story", selected: "false" },
+                { title: "WINNER Oribe Tsubasa: Finish a battle where Tsubasa initiates the final hit/session.", selected: "false" },
+                { title: "Coordinator Oribe Tsubasa: Swap outfits with Tsubasa.", selected: "false" },
+                { title: "Radiant Star Oribe Tsubasa: Get all of Tsubasa's Radiant Skills.", selected: "false" },
+                { title: "Birth of a Great Lord: Class change into a Great Lord.", selected: "false" },
+                { title: "Birth of a Conqueror: Class change into a Conqueror.", selected: "false" },
+                { title: "Skill Expert Chrom: Teach Chrom 50 different skills.", selected: "false" },
+                { title: "Carnage Master Chrom: Perform 15+ Carnage Unities for Chrom", selected: "false" },
+                { title: "Aggressive Power Chrom: Get a +3 weapon with Chrom.", selected: "false" },
+                { title: "Assault Achievement: Visit the Dungeon at least once", selected: "false" },
+                { title: "Conquest Achievement: Completely fill out the map of a dungeon, no blank spaces on the map, includes the final boss room even though it's just a cutscene", selected: "false" },
+                { title: "Pillage Achievement: Open all treasure boxes, don't leave any unopened", selected: "false" },
+                { title: "The Illusory World's Bad Boy: Attack 30 enemies on the overworld.", selected: "false" },
+                { title: "The Illusory World's Assassin: Attack 100 enemies on the overworld.", selected: "false" },
+                { title: "The Illusory World's Janitor: Attack 500 enemies on the overworld.", selected: "false" },
+                { title: "Up n' Down: Go up and down the elevators in Daitama 10 times.", selected: "false" },
+
+		    ]
+		},
+		{
+		    title: "Game2 Title",
+		    tasks: [
+				{ title: "Trophy Title", selected: "false" },
+				{ title: "Trophy2 Title", selected: "false" }
+		    ]
+		}
+    ];
 
   // A utility function for creating a new project
   // with the given projectTitle
@@ -76,6 +129,15 @@ angular.module('todo', ['ionic'])
       createProject(projectTitle);
     }
   };
+    // Add Game Guide to the left when clicked
+  $scope.moveToUserList = function (project, index) {
+      //create alert
+      $scope.activeProject = project;
+      $scope.projects.push(project);
+      Projects.save($scope.projects);
+      $scope.selectProject(project, $scope.projects.length - 1);
+      $ionicSideMenuDelegate.toggleRight(false);
+  };
 
   // Called to select the given project
   $scope.selectProject = function(project, index) {
@@ -84,39 +146,54 @@ angular.module('todo', ['ionic'])
     $ionicSideMenuDelegate.toggleLeft(false);
   };
 
-  // Create our modal
-  $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
-    $scope.taskModal = modal;
-  }, {
-    scope: $scope
-  });
-
-  $scope.createTask = function(task) {
-    if(!$scope.activeProject || !task) {
+  $scope.confirmDelete = function() {
+    if(!$scope.activeProject) {
       return;
     }
-    $scope.activeProject.tasks.push({
-      title: task.title
-    });
-    $scope.taskModal.hide();
+    
+	var confirmPopup = $ionicPopup.confirm({
+		title: "Delete Guide",
+		template: "Are you sure you want to delete this guide?"
+	});
+	
+	confirmPopup.then(function(res) {
+		if(res) {
+			$scope.projects.splice(Projects.getLastActiveIndex(),1);
+			$scope.selectProject($scope.projects[0],0);
+		} else{
+			return;
+		}
+	});
 
     // Inefficient, but save all the projects
     Projects.save($scope.projects);
 
     task.title = "";
+	task.selected = "false";
   };
 
   $scope.newTask = function() {
     $scope.taskModal.show();
   };
 
-  $scope.closeNewTask = function() {
+  $scope.closeDeleteGuide = function() {
     $scope.taskModal.hide();
-  }
+  };
 
   $scope.toggleProjects = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
+  
+  $scope.updateChange = function(task) {
+	  if (task.checked) {
+		  task.selected = "true";
+	  }
+	  else {
+		  task.selected = "false";
+	  }
+	  
+	  Projects.save($scope.projects);
+  }
 
 
   // Try to create the first project, make sure to defer
