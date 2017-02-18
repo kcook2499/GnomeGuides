@@ -39,7 +39,7 @@ angular.module('todo', ['ionic'])
       // Add a new project
       return {
         title: projectTitle,
-        tasks: []
+        tasks: [{title: "temp task", selected: "false"}]
       };
     },
     getLastActiveIndex: function() {
@@ -103,7 +103,7 @@ angular.module('todo', ['ionic'])
   };
 
   $scope.confirmDelete = function() {
-    if(!$scope.activeProject || projects.size() == 0) {
+    if(!$scope.activeProject) {
       return;
     }
     
@@ -115,9 +115,8 @@ angular.module('todo', ['ionic'])
 	confirmPopup.then(function(res) {
 		if(res) {
 			$scope.projects.splice(Projects.getLastActiveIndex(),1);
-			Projects.setLastActiveIndex(0);
-			$scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
-		} else {
+			$scope.selectProject($scope.projects[0],0);
+		} else{
 			return;
 		}
 	});
