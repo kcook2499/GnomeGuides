@@ -37,7 +37,7 @@
 
     <ion-side-menus>
 		<ion-side-menu-content>
-			<ion-header-bar class="bar-dark">
+			<ion-header-bar class="bar-stable">
 				<button class="button button-icon" ng-click="toggleProjects()">
 					<i class="icon ion-navicon"></i>
 				</button>
@@ -47,17 +47,17 @@
 				</button>
 			</ion-header-bar>
 			<ion-content scroll="true">
-				<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'" class="wrapping-list">
+				<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'" class="wrapping-list checkbox-balanced">
 					<b>{{task.title}}</b> {{task.subtitle}} 
 				</ion-checkbox>
 			</ion-content>
 		</ion-side-menu-content>
 		
 		<ion-side-menu side="left">
-			<ion-header-bar class="bar-dark">
+			<ion-header-bar class="bar-assertive">
 				<h1 class="title">Your Guides</h1>
-				<button class="button button-icon ion-plus" ng-click="newProject()">
-				</button>
+				<!--<button class="button button-icon ion-plus" ng-click="newProject()">
+				</button>-->
 			</ion-header-bar>
 			<ion-content scroll="false">
 				<ion-list>
@@ -69,7 +69,7 @@
 		</ion-side-menu>
 		
 		<ion-side-menu side="right">
-			<ion-header-bar class="bar-dark">
+			<ion-header-bar class="bar-positive">
 				<h1 class="title">Available Guides</h1>
 			</ion-header-bar>
             <ion-content scroll="false">
