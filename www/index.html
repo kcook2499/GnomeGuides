@@ -47,7 +47,7 @@
 				</button>
 			</ion-header-bar>
 			<ion-content scroll="true">
-				<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'">
+				<ion-checkbox ng-repeat="task in activeProject.tasks" ng-model="task.checked" ng-change="updateChange(task)" ng-init="task.selected == 'true'" class="wrapping-list">
 					{{task.title}} 
 				</ion-checkbox>
 			</ion-content>

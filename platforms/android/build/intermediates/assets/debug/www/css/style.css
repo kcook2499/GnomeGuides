@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.item-checkbox .item-cnotent{
+	pointer-events: auto;
+}
+.wrapping-list .item-content, .wrapping-list .item {
+    overflow: initial;
+    white-space: initial;
+}

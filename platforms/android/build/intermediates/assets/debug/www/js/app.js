@@ -98,13 +98,49 @@ angular.module('todo', ['ionic'])
 		    ]
 		},
 		{
-		    title: "Game2 Title",
-		    tasks: [
-				{ title: "Trophy Title", selected: "false" },
-				{ title: "Trophy2 Title", selected: "false" }
-		    ]
+			title: "Demon's Souls",
+			tasks: [
+				{ title: "Toughest Soul Trophy", selected: "false"},
+				{ title: "Rogue's Trophy", selected: "false"},
+				{ title: "Sage's Trophy", selected: "false"},
+				{ title: "Saint's Trophy", selected: "false"},
+				{ title: "Soldier's Trophy", selected: "false"},
+				{ title: "World Uniter's Trophy", selected: "false"},
+				{ title: "Dragon God's Trophy", selected: "false"},
+				{ title: "False King's Trophy", selected: "false"},
+				{ title: "Maiden Astraea's Trophy", selected: "false"},
+				{ title: "Old Monk's Trophy", selected: "false"},
+				{ title: "Storm King's Trophy", selected: "false"},
+				{ title: "Adjudicator's Trophy", selected: "false"},
+				{ title: "Armor Spider's Trophy", selected: "false"},
+				{ title: "Blood Master's Trophy", selected: "false"},
+				{ title: "Congratulant's Trophy", selected: "false"},
+				{ title: "Darkmoon's Trophy", selected: "false"},
+				{ title: "Dirty Colossus' Trophy", selected: "false"},
+				{ title: "Flame Master's Trophy", selected: "false"},
+				{ title: "Flamelurker's Trophy", selected: "false"},
+				{ title: "Flying Dragon's Trophy", selected: "false"},
+				{ title: "Fool's Idol's Trophy", selected: "false"},
+				{ title: "Leechmonger's Trophy", selected: "false"},
+				{ title: "Life Master's Trophy", selected: "false"},
+				{ title: "Maneater's Trophy", selected: "false"},
+				{ title: "Master Basher's Trophy", selected: "false"},
+				{ title: "Master Bowman's Trophy", selected: "false"},
+				{ title: "Master Slasher's Trophy", selected: "false"},
+				{ title: "Moonlight's Trophy", selected: "false"},
+				{ title: "Old Hero's Trophy", selected: "false"},
+				{ title: "Old King's Trophy", selected: "false"},
+				{ title: "Penetrator's Trophy", selected: "false"},
+				{ title: "Phalanx's Trophy", selected: "false"},
+				{ title: "Poison Master's Trophy", selected: "false"},
+				{ title: "Shade Master's Trophy", selected: "false"},
+				{ title: "Tower Knight's Trophy", selected: "false"},
+				{ title: "Trophy of Distinction", selected: "false"},
+				{ title: "Trophy of Hardness", selected: "false"},
+				{ title: "Trophy of Sharpness", selected: "false"}
+			]
 		}
-    ];
+	];
 
   // A utility function for creating a new project
   // with the given projectTitle
@@ -123,12 +159,13 @@ angular.module('todo', ['ionic'])
   $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
 
   // Called to create a new project
-  $scope.newProject = function() {
+  /*$scope.newProject = function() {
     var projectTitle = prompt('Project name');
     if(projectTitle) {
       createProject(projectTitle);
     }
-  };
+  };*/
+  
     // Add Game Guide to the left when clicked
   $scope.moveToUserList = function (project, index) {
       //create alert
@@ -199,7 +236,7 @@ angular.module('todo', ['ionic'])
   // Try to create the first project, make sure to defer
   // this by using $timeout so everything is initialized
   // properly
-  $timeout(function() {
+  /*$timeout(function() {
     if($scope.projects.length == 0) {
       while(true) {
         var projectTitle = prompt('Your first project title:');
@@ -209,6 +246,6 @@ angular.module('todo', ['ionic'])
         }
       }
     }
-  }, 1000);
+  }, 1000);*/
 
 })

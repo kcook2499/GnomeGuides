@@ -3,3 +3,7 @@
 .item-checkbox .item-cnotent{
 	pointer-events: auto;
 }
+.wrapping-list .item-content, .wrapping-list .item {
+    overflow: initial;
+    white-space: initial;
+}
