@@ -35,13 +35,6 @@ angular.module('todo', ['ionic'])
     save: function(projects) {
       window.localStorage['projects'] = angular.toJson(projects);
     },
-    newProject: function(projectTitle) {
-      // Add a new project
-      return {
-        title: projectTitle,
-        tasks: [{title: "temp task", selected: "false"}]
-      };
-    },
     getLastActiveIndex: function() {
       return parseInt(window.localStorage['lastActiveProject']) || 0;
     },
@@ -57,43 +50,43 @@ angular.module('todo', ['ionic'])
 		{
 		    title: "Tokyo Mirage Sessions",
 		    tasks: [
-				{ title: "Reincarnation: Complete the Prologue", selected: "false" },
-				{ title: "A Star is Born: Complete Ch. 1", selected: "false" },
-				{ title: "That Girl was Fired: Complete Ch. 2", selected: "false" },
-                { title: "Next Generation: Complete Ch. 3", selected: "false" },
-                { title: "The Audition: Complete Ch. 4", selected: "false" },
-                { title: "True Colors: Complete Ch. 5", selected: "false" },
-                { title: "Fire Emblem: Complete Ch. 6", selected: "false" },
-                { title: "Long Goodbye: Complete the story.", selected: "false" },
-                { title: "Grand Finale: Get the True (Complete) Ending.", selected: "false" },
-                { title: "On Your Mark: Complete 10% of the Side Stories.", selected: "false" },
-                { title: "Get Set Go: Complete 50% of the Side Stories.", selected: "false" },
-                { title: "Good Luck: Complete all side stories.", selected: "false" },
-                { title: "Newbie Model Aoi Itsuki: Gained automatically through Ch. 2", selected: "false" },
-                { title: "Backing Chorus Aoi Itsuki: Gained automatically through Ch. 3", selected: "false" },
-                { title: "The New Face in Music Aoi Itsuki: Gained automatically in Ch. 5", selected: "false" },
-                { title: "WINNER Aoi Itsuki: Finish a battle where Itsuki gets the last hit.", selected: "false" },
-                { title: "Coordinator Aoi Itsuki: Swap Itsuki's outfit to a different one (non-DLC only).", selected: "false" },
-                { title: "Radiant Star Aoi Itsuki: Get all of Itsuki's Radiant skills.", selected: "false" },
-                { title: "Oribe Tsubasa ON STAGE: Gained automatically in the Prologue when Tsubasa joins.", selected: "false" },
-                { title: "Handshake Pressure: Complete Tsubasa's 1st Side Story", selected: "false" },
-                { title: "Open your Heart: Complete Tsubasa's 2nd Side Story", selected: "false" },
-                { title: "The Wind is Tsubasa Colored: Complete Tsubasa's 3rd Side Story", selected: "false" },
-                { title: "WINNER Oribe Tsubasa: Finish a battle where Tsubasa initiates the final hit/session.", selected: "false" },
-                { title: "Coordinator Oribe Tsubasa: Swap outfits with Tsubasa.", selected: "false" },
-                { title: "Radiant Star Oribe Tsubasa: Get all of Tsubasa's Radiant Skills.", selected: "false" },
-                { title: "Birth of a Great Lord: Class change into a Great Lord.", selected: "false" },
-                { title: "Birth of a Conqueror: Class change into a Conqueror.", selected: "false" },
-                { title: "Skill Expert Chrom: Teach Chrom 50 different skills.", selected: "false" },
-                { title: "Carnage Master Chrom: Perform 15+ Carnage Unities for Chrom", selected: "false" },
-                { title: "Aggressive Power Chrom: Get a +3 weapon with Chrom.", selected: "false" },
-                { title: "Assault Achievement: Visit the Dungeon at least once", selected: "false" },
-                { title: "Conquest Achievement: Completely fill out the map of a dungeon, no blank spaces on the map, includes the final boss room even though it's just a cutscene", selected: "false" },
-                { title: "Pillage Achievement: Open all treasure boxes, don't leave any unopened", selected: "false" },
-                { title: "The Illusory World's Bad Boy: Attack 30 enemies on the overworld.", selected: "false" },
-                { title: "The Illusory World's Assassin: Attack 100 enemies on the overworld.", selected: "false" },
-                { title: "The Illusory World's Janitor: Attack 500 enemies on the overworld.", selected: "false" },
-                { title: "Up n' Down: Go up and down the elevators in Daitama 10 times.", selected: "false" },
+				{ title: "Reincarnation:", subtitle: "Complete the Prologue", selected: "false" },
+				{ title: "A Star is Born:", subtitle: "Complete Ch. 1", selected: "false" },
+				{ title: "That Girl was Fired:", subtitle: "Complete Ch. 2", selected: "false" },
+                { title: "Next Generation:", subtitle: "Complete Ch. 3", selected: "false" },
+                { title: "The Audition:", subtitle: "Complete Ch. 4", selected: "false" },
+                { title: "True Colors:", subtitle: "Complete Ch. 5", selected: "false" },
+                { title: "Fire Emblem:", subtitle: "Complete Ch. 6", selected: "false" },
+                { title: "Long Goodbye:", subtitle: "Complete the story.", selected: "false" },
+                { title: "Grand Finale:", subtitle: "Get the True (Complete) Ending.", selected: "false" },
+                { title: "On Your Mark:", subtitle: "Complete 10% of the Side Stories.", selected: "false" },
+                { title: "Get Set Go:", subtitle: "Complete 50% of the Side Stories.", selected: "false" },
+                { title: "Good Luck:", subtitle: "Complete all side stories.", selected: "false" },
+                { title: "Newbie Model Aoi Itsuki:", subtitle: "Gained automatically through Ch. 2", selected: "false" },
+                { title: "Backing Chorus Aoi Itsuki:", subtitle: "Gained automatically through Ch. 3", selected: "false" },
+                { title: "The New Face in Music Aoi Itsuki:", subtitle: "Gained automatically in Ch. 5", selected: "false" },
+                { title: "WINNER Aoi Itsuki:", subtitle: "Finish a battle where Itsuki gets the last hit.", selected: "false" },
+                { title: "Coordinator Aoi Itsuki:", subtitle: "Swap Itsuki's outfit to a different one (non-DLC only).", selected: "false" },
+                { title: "Radiant Star Aoi Itsuki:", subtitle: "Get all of Itsuki's Radiant skills.", selected: "false" },
+                { title: "Oribe Tsubasa ON STAGE:", subtitle: "Gained automatically in the Prologue when Tsubasa joins.", selected: "false" },
+                { title: "Handshake Pressure:", subtitle: "Complete Tsubasa's 1st Side Story", selected: "false" },
+                { title: "Open your Heart:", subtitle: "Complete Tsubasa's 2nd Side Story", selected: "false" },
+                { title: "The Wind is Tsubasa Colored:", subtitle: "Complete Tsubasa's 3rd Side Story", selected: "false" },
+                { title: "WINNER Oribe Tsubasa:", subtitle: "Finish a battle where Tsubasa initiates the final hit/session.", selected: "false" },
+                { title: "Coordinator Oribe Tsubasa:", subtitle: "Swap outfits with Tsubasa.", selected: "false" },
+                { title: "Radiant Star Oribe Tsubasa:", subtitle: "Get all of Tsubasa's Radiant Skills.", selected: "false" },
+                { title: "Birth of a Great Lord:", subtitle: "Class change into a Great Lord.", selected: "false" },
+                { title: "Birth of a Conqueror:", subtitle: "Class change into a Conqueror.", selected: "false" },
+                { title: "Skill Expert Chrom:", subtitle: "Teach Chrom 50 different skills.", selected: "false" },
+                { title: "Carnage Master Chrom:", subtitle: "Perform 15+ Carnage Unities for Chrom", selected: "false" },
+                { title: "Aggressive Power Chrom:", subtitle: "Get a +3 weapon with Chrom.", selected: "false" },
+                { title: "Assault Achievement:", subtitle: "Visit the Dungeon at least once", selected: "false" },
+                { title: "Conquest Achievement:", subtitle: "Completely fill out the map of a dungeon, no blank spaces on the map, includes the final boss room even though it's just a cutscene", selected: "false" },
+                { title: "Pillage Achievement:", subtitle: "Open all treasure boxes, don't leave any unopened", selected: "false" },
+                { title: "The Illusory World's Bad Boy:", subtitle: "Attack 30 enemies on the overworld.", selected: "false" },
+                { title: "The Illusory World's Assassin:", subtitle: "Attack 100 enemies on the overworld.", selected: "false" },
+                { title: "The Illusory World's Janitor:", subtitle: "Attack 500 enemies on the overworld.", selected: "false" },
+                { title: "Up n' Down:", subtitle: "Go up and down the elevators in Daitama 10 times.", selected: "false" },
 
 		    ]
 		},
@@ -204,13 +197,6 @@ angular.module('todo', ['ionic'])
 
     // Inefficient, but save all the projects
     Projects.save($scope.projects);
-
-    task.title = "";
-	task.selected = "false";
-  };
-
-  $scope.newTask = function() {
-    $scope.taskModal.show();
   };
 
   $scope.closeDeleteGuide = function() {
