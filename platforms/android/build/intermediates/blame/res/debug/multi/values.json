@@ -11,14 +11,7 @@
                     "endOffset": 114
                 },
                 "from": {
-                    "file": "C:\\Users\\LI\\Desktop\\GnomeGuides\\platforms\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 156,
-                        "endColumn": 63,
-                        "endOffset": 215
-                    }
+                    "file": "C:\\Users\\LI\\Desktop\\GnomeGuides\\platforms\\android\\res\\values\\strings.xml"
                 }
             },
             {
@@ -26,8 +19,8 @@
                     "startLine": 3,
                     "startColumn": 4,
                     "startOffset": 119,
-                    "endColumn": 41,
-                    "endOffset": 156
+                    "endColumn": 49,
+                    "endOffset": 164
                 },
                 "from": {
                     "file": "C:\\Users\\LI\\Desktop\\GnomeGuides\\platforms\\android\\res\\values\\strings.xml",
@@ -35,8 +28,8 @@
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 55,
-                        "endColumn": 41,
-                        "endOffset": 92
+                        "endColumn": 49,
+                        "endOffset": 100
                     }
                 }
             },
@@ -44,19 +37,12 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 161,
+                    "startOffset": 169,
                     "endColumn": 58,
-                    "endOffset": 215
+                    "endOffset": 223
                 },
                 "from": {
-                    "file": "C:\\Users\\LI\\Desktop\\GnomeGuides\\platforms\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 97,
-                        "endColumn": 58,
-                        "endOffset": 151
-                    }
+                    "file": "C:\\Users\\LI\\Desktop\\GnomeGuides\\platforms\\android\\res\\values\\strings.xml"
                 }
             }
         ]
